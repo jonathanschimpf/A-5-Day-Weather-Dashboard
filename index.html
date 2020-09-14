@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!--bootswatch cdn for layout styling-->
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/darkly/bootstrap.min.css" />
+
+
+    <!--bootstrap cdn for layout styling // (currently commented out due to bootswatch theme use-->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" /> -->
+
+
+    <!-- fontawesome for icons -->
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+
+
+    <!-- google fonts link for "work sans" font -->
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet" />
+
+
+    <!-- dark weather related favicon -->
+
+
+    <link rel='icon' href='weather_favicon/weather_favicon.ico' type='image/x-icon' />
+
+
+    <!-- style.css featuring layout CSS classes -->
+
+
+    <link rel="stylesheet" href="style.css" />
+
+
+    <!-- [favi] browser tab title -->
+
+
+    <title>Weather Dashboard (5 Day)</title>
+
+
+</head>
+
+<body>
+
+
+    <!-- navbar featuring simple weather dashboard title for the page -->
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center align-items-start">
+        <a class="navbar-brand" href="index.html">Weather Dashboard‎‎‏‏‎ ‎‏‏‎ ‎☀☁‏‏‎ ‎‏‏‎ ‎ Five Day Forecast</a>
+    </nav>
+    </nav>
+
+
+    <!-- site content within the container. this contains a side form for searching,
+     a jumbotron for text content, and five cards to display the forecast -->
+
+
+    <main class="container-fluid">
+
+
+        <!-- side search section with list of cities that append -->
+
+
+        <br>
+
+        <div class="row">
+
+            <div class="col-md-3 py-4">
+
+                <form>
+                    <fieldset>
+
+                        <br>
+
+                        <h4>Check Weather Conditions:</h4>
+
+                        <hr>
+
+                        <div class="form-group">
+                            <input class="form-control mr-sm-2" style="width: 270px; height: 40px" type="text"
+                                placeholder="Search">
+
+                            <small id="emailHelp" class="form-text text-muted">Enter your desired city above.</small>
+                            <br>
+                            <!-- <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Clear Previous Searches</button> -->
+                            <button id="button-addon8" type="submit" class="btn btn-secondary"><i
+                                    class="fa fa-search"></i> Search</button>
+                            <button id="button-addon8" type="submit" class="btn btn-secondary"><i
+                                    class="fa fa-trash"></i></button>
+
+
+                            <!-- breathing room within the side bar-->
+
+
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+
+                            <!-- ^ breathing room within the side bar ^ -->
+
+
+                            <!-- previous search results sections and buttons to return back to previous search -->
+
+                            <h4>Previous Search Results:</h4>
+
+                            <hr>
+
+                            <button class="btn btn-secondary my-2 " tyle="width: 270px; height: 50px"
+                                type="submit">Philadelphia</button>
+                            <button class="btn btn-secondary my-2 " tyle="width: 270px; height: 50px" 
+                            type="submit">New York</button>
+                            <button class="btn btn-secondary my-2 " tyle="width: 270px; height: 50px" 
+                            type="submit">Los Angeles</button>
+                            <button class="btn btn-secondary my-2 " tyle="width: 270px; height: 50px"
+                                type="submit">Boston</button>
+                            <button class="btn btn-secondary my-2 " tyle="width: 270px; height: 50px"
+                                type="submit">Miami</button>
+                            <button class="btn btn-secondary my-2 " tyle="width: 270px; height: 50px"
+                                type="submit">Seattle</button>
+                            <button class="btn btn-secondary my-2 " tyle="width: 270px; height: 50px"
+                                type="submit">Denver</button>
+                            <button class="btn btn-secondary my-2 " tyle="width: 270px; height: 50px"
+                                type="submit">Detroit</button>
+                            <button class="btn btn-secondary my-2 " tyle="width: 270px; height: 50px"
+                                type="submit">Minnaepolis</button>
+                            <button class="btn btn-secondary my-2 " tyle="width: 270px; height: 50px"
+                                type="submit">Chicago</button>
+                            <button class="btn btn-secondary my-2 " tyle="width: 270px; height: 50px"
+                                type="submit">Baltimore</button>
+                            <button class="btn btn-secondary my-2 " tyle="width: 270px; height: 50px"
+                                type="submit">Portland</button>
+                            <button class="btn btn-secondary my-2 " tyle="width: 270px; height: 50px"
+                                type="submit">Austin</button>
+
+                        </div>
+
+                    </fieldset>
+
+                </form>
+
+            </div>
+
+
+            <!-- searched city display results: temperature, humidity, wind speed, uv index. -->
+
+
+            <div class="col-md-9 py-4">
+
+                <div class="jumbotron">
+                    <h4>Currently:</h4>
+
+                    <hr>
+
+                    <h2>Philadelphia 9/13/2020 ☁ </h2>
+
+                    <br>
+
+                    <h5> Temperature: 80 °F</h5>
+                    <h5>Humidity: 50 %</h5>
+                    <h5>Wind Speed: 3 MPH </h5>
+                    <h5>UV Index: 8.49 </h5>
+
+
+                    <!-- breathing room within the jumbotron -->
+
+                    <br>
+                    <br>
+                    <br>
+
+                    <!-- ^ breathing room within the jumbotron ^ -->
+
+
+                    <!-- five day forecast cards section-->
+
+                    <h4>Next Five Days: </h4>
+                    <hr>
+                    <br>
+                    <div class="row justify-content-around">
+
+
+                        <div class="col-m-2">
+                            <div class="card border-light mb-3" style="max-width: 20rem;">
+                                <div class="card-header">Date: 9/14/2020</div>
+                                <div class="card-body">
+                                    <img>
+                                    <p class="card-text">Temp: 82 °F</p>
+                                    <p class="card-text">Humidity: 40%</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-m-2">
+                            <div class="card border-light mb-3" style="max-width: 20rem;">
+                                <div class="card-header">Date: 9/15/2020</div>
+                                <div class="card-body">
+                                    <img>
+                                    <p class="card-text">Temp: 88 °F</p>
+                                    <p class="card-text">Humidity: 39%</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-m-2">
+                            <div class="card border-light mb-3" style="max-width: 20rem;">
+                                <div class="card-header">Date: 9/16/2020</div>
+                                <div class="card-body">
+                                    <img>
+                                    <p class="card-text">Temp: 79 °F</p>
+                                    <p class="card-text">Humidity: 42%</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-m-2">
+                            <div class="card border-light mb-3" style="max-width: 20rem;">
+                                <div class="card-header">Date: 9/17/2020</div>
+                                <div class="card-body">
+                                    <img>
+                                    <p class="card-text">Temp: 85 °F</p>
+                                    <p class="card-text">Humidity: 42%</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-m-2">
+                            <div class="card border-light mb-3" style="max-width: 20rem;">
+                                <div class="card-header">Date: 9/18/2020</div>
+                                <div class="card-body">
+                                    <img>
+                                    <p class="card-text">Temp: 87 °F</p>
+                                    <p class="card-text">Humidity: 50%</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </main>
+
+    <!-- script.js file / jQuery CDN link / moment.js link -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+
+</body>
+
+</html>
