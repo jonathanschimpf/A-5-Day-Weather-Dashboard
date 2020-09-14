@@ -8,13 +8,13 @@
   var myOpenWeatherKey = "8efa203e02eb478afd5187cab049f3e8";
 
 
-    function checkCurrentConditions(searchedCity) {
+    function checkCurrentConditions(city) {
 
         var queryURL =
 
         "https://api.openweathermap.org/data/2.5/weather?" +  
         
-        searchedCity + "&appid=" + myOpenWeatherKey;
+        city + "&appid=" + myOpenWeatherKey;
 
     $.ajax({
         url: queryURL,
@@ -25,7 +25,7 @@
     .then(function (searchedCityResults) {
         console.log(queryURL);
 
-      var cityNameDisplayed =  $("#searched-city-nameanddate").html("<h2>" + searchedCityResults + "</h2>")
+      $("#searched-city-nameanddate").html("<h2>" + searchedCityResults+ "</h2>")
         
 
         });
@@ -40,7 +40,7 @@
 
         });
 
-    }
+    };
 
       
 
