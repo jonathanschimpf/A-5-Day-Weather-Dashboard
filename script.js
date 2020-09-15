@@ -11,8 +11,8 @@ $(document).ready(function () {
     $("#search-button").on("click", searchResults);
 
 
-    // searchResults function takes the city search criteria after search
-    // button is clicked and pairs it with the checkCurrentConditions function below.
+    // searchResults function takes the city search criteria (#usersSearchInput) after
+    // search button is clicked and pairs it with the checkCurrentConditions function below.
 
 
     function searchResults(event) {
@@ -89,6 +89,8 @@ $(document).ready(function () {
 
             + latitude + "&lon=" + longitude + "&exclude=" + "&appid=" + myOpenWeatherKey;
 
+
+
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -96,6 +98,8 @@ $(document).ready(function () {
         }).then(function (oneCallResults) {
 
             console.log(oneCallResults);
+
+
 
             var tempF = (oneCallResults.current.temp - 273.15) * 1.80 + 32;
 
@@ -105,15 +109,28 @@ $(document).ready(function () {
 
             $("#searched-city-windspeed").html("<h4>" + "Wind Speed: ‎‏‏‎ ‎ " + " " + oneCallResults.current.wind_speed + " " + " ‎‏‏‎ ‎ mph" + "</h4>");
 
-            $("#searched-city-uvindex").html("<h4>" + "UV Index: ‎‏‏‎ ‎ " + oneCallResults.current.uvi + "</h4>");
+            $("#searched-city-uvindex").html("<h4>" + "UV Index: ‎‏‏‎ ‎ " + '<span class="uviColor">' + oneCallResults.current.uvi + "</span>" + "</h4>");
 
 
+
+            var oneCallResultsCurrentUvi = oneCallResults.current.uvi;
+
+
+
+            if (oneCallResultsCurrentUvi < 3) {
+                $(".uviColor").addClass("lowUV");
+
+            } else if (oneCallResultsCurrentUvi >= 3 && oneCallResultsCurrentUvi <= 7) {
+                $(".uviColor").addClass("mediumUV");
+
+            } else {
+                $(".uviColor").addClass("highUV");
+            }
 
         });
 
     };
 
-    
 
 
 });

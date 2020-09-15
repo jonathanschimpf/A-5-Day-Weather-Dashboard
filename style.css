@@ -1,12 +1,30 @@
 .jumbotron {
     padding-top: 21px !important;
     padding-bottom: 20px !important;
-  }
+}
+
+.lowUV {
+    background: green !important;
+    color: black!important;
+    padding: 3px!important;
+}
+
+.mediumUV {
+    background: yellow !important;
+    color: black!important;
+    padding: 3px!important;
+}
+
+.highUV {
+    background: red!important;
+    color: black!important;
+    padding: 3px!important;
+}
+
 
 /* .col-md-3 {
     background: #303030;
 } */
-
 
 /* @media (max-width: 768px) {
     .navbar-collapse  {
