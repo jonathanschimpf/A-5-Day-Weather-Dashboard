@@ -22,7 +22,7 @@ $(document).ready(function () {
         var citySearchInput = $("#usersSearchInput").val();
         console.log(citySearchInput);
 
-        checkCurrentConditions(citySearchInput);
+        checkCurrentCity(citySearchInput);
 
     }
 
@@ -43,11 +43,12 @@ $(document).ready(function () {
 
 
 
-    function checkCurrentConditions(city) {
+    function checkCurrentCity(city) {
 
         var queryURL =
 
             "https://api.openweathermap.org/data/2.5/weather?q=" +
+
 
             city + "&appid=" + myOpenWeatherKey;
 
@@ -59,24 +60,58 @@ $(document).ready(function () {
         })
 
             .then(function (searchedCityResults) {
+
                 console.log(searchedCityResults);
 
                 $("#searched-city-nameanddate").html("<h2>" + searchedCityResults.name + "  " + " " + "(" + moment().format('l') + ")" + "</h2>");
                 //"<img>" + "https://openweathermap.org/img/wn/" + searchedCityResults.weather[0].icon + "@2x.png" ICON
 
-                var tempF = (searchedCityResults.main.temp - 273.15) * 1.80 + 32;
-                
-                $("#searched-city-temperature").html("<h4>" + "Temperature: ‎‏‏‎ ‎ " + " " + tempF.toFixed(1) + " " + "°F" + "</h4>");
+                var longitude = searchedCityResults.coord.lon;
+                var latitude = searchedCityResults.coord.lat;
 
-                $("#searched-city-humidity").html("<h4>" + "Humidity: ‎‏‏‎ ‎ " + " " + searchedCityResults.main.humidity + " " + "%" + "</h4>");
-                
-                $("#searched-city-windspeed").html("<h4>" + "Windspeed: ‎‏‏‎ ‎ " + " " + searchedCityResults.wind.speed + " " + "mph" + "</h4>");
+                getCurrentConditions(longitude, latitude);
 
             });
+
 
     };
 
 
+    function getCurrentConditions(longitude, latitude) {
+
+        var queryURL =
+
+            "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+
+            + latitude + "&lon=" + longitude + "&exclude=" + "&appid=" + myOpenWeatherKey;
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+
+        }).then(function (oneCallResults) {
+
+            console.log(oneCallResults);
+
+            var tempF = (oneCallResults.current.temp - 273.15) * 1.80 + 32;
+
+            $("#searched-city-temperature").html("<h4>" + "Temperature: ‎‏‏‎ ‎ " + " " + tempF.toFixed(1) + " " + "°F" + "</h4>");
+
+            $("#searched-city-humidity").html("<h4>" + "Humidity: ‎‏‏‎ ‎ " + " " + oneCallResults.current.humidity + " " + "%" + "</h4>");
+
+            $("#searched-city-windspeed").html("<h4>" + "Wind Speed: ‎‏‏‎ ‎ " + " " + oneCallResults.current.wind_speed + " " + "MPH" + "</h4>");     
+
+            $("#searched-city-uvindex").html("<h4>" + "UV Index: ‎‏‏‎ ‎ " + oneCallResults.current.uvi + "</h4>");
+
+        });
+
+    };
+
+
+
+
+
+    
 
 });
 
