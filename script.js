@@ -27,20 +27,17 @@ $(document).ready(function () {
     }
 
 
-
     // my openweathermap.org api key in variable format to be applied below
-
 
 
     var myOpenWeatherKey = "8efa203e02eb478afd5187cab049f3e8";
 
 
-
-    // checkCurrentConditions function has been given the users search criteria
-    // by the searchResults function, and it will now call on the openweathermap api
-    // that is linked below  and paired with "myOpenWeatherKey" (current weather data api)
-    // AJAX asynchronously retrieves JSON (and XML) information for the application use.
-
+    // checkCurrentConditions function has been given the users search criteria..
+    // ..by the searchResults function, and it will now call on the openweathermap api..
+    // ..which is linked below and paired with "myOpenWeatherKey" (current weather data api)
+    // AJAX asynchronously retrieves JSON information for the application to use.
+    // this API CALL strictly targets the city name and retrieves an icon.
 
 
     function checkCurrentCity(city) {
@@ -63,8 +60,11 @@ $(document).ready(function () {
 
                 console.log(searchedCityResults);
 
-                $("#searched-city-nameanddate").html("<h2>" + searchedCityResults.name + "  " + " " + "(" + moment().format('l') + ")" + "</h2>");
-                //"<img>" + "https://openweathermap.org/img/wn/" + searchedCityResults.weather[0].icon + "@2x.png" ICON
+                $("#searched-city-nameanddate").html("<h2>" + searchedCityResults.name + " ‎‏‏‎ ‎ " + "("
+
+                    + moment().format('l') + ")" + "<img src=" + "https://openweathermap.org/img/wn/"
+
+                    + searchedCityResults.weather[0].icon + "@2x.png" + ">" + "</h2>");
 
                 var longitude = searchedCityResults.coord.lon;
                 var latitude = searchedCityResults.coord.lat;
@@ -75,6 +75,10 @@ $(document).ready(function () {
 
 
     };
+
+    // getCurrentConditions:
+    // AJAX asynchronously retrieves JSON information for the application to use.
+    // this is the ONE CALL API CALL. retrieves temperature, humidity, wind speed, uv index.
 
 
     function getCurrentConditions(longitude, latitude) {
@@ -99,19 +103,18 @@ $(document).ready(function () {
 
             $("#searched-city-humidity").html("<h4>" + "Humidity: ‎‏‏‎ ‎ " + " " + oneCallResults.current.humidity + " " + "%" + "</h4>");
 
-            $("#searched-city-windspeed").html("<h4>" + "Wind Speed: ‎‏‏‎ ‎ " + " " + oneCallResults.current.wind_speed + " " + "MPH" + "</h4>");     
+            $("#searched-city-windspeed").html("<h4>" + "Wind Speed: ‎‏‏‎ ‎ " + " " + oneCallResults.current.wind_speed + " " + " ‎‏‏‎ ‎ mph" + "</h4>");
 
             $("#searched-city-uvindex").html("<h4>" + "UV Index: ‎‏‏‎ ‎ " + oneCallResults.current.uvi + "</h4>");
+
+
 
         });
 
     };
 
-
-
-
-
     
+
 
 });
 
