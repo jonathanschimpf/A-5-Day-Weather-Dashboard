@@ -5,9 +5,13 @@ $(document).ready(function () {
     console.log("I'm ready..");
 
 
-    // this is the search button on."click" feature
+    // adding citySearchInput to the global scope
+
 
     var citySearchInput = " ";
+   
+
+    // this is the search button on."click" feature
 
 
     $("#search-button").on("click", searchResults);
@@ -27,6 +31,7 @@ $(document).ready(function () {
         checkCurrentCity(citySearchInput);
 
     }
+
 
 
     // my openweathermap.org api key in variable format to be applied below
@@ -108,9 +113,9 @@ $(document).ready(function () {
 
                 var tempF = (data.current.temp - 273.15) * 1.80 + 32;
 
-                $("#searched-city-temperature").html("<h5>" + "Temperature: ‎‏‏‎ ‎ " + " " + tempF.toFixed(1) + " " + "°F" + "</h5>");
+                $("#searched-city-temperature").html("<h5>" + "Temperature: ‎‏‏‎ ‎ " + " " + tempF.toFixed(1) + " " + "‏‏‎ ‎°F" + "</h5>");
 
-                $("#searched-city-humidity").html("<h5>" + "Humidity: ‎‏‏‎ ‎ " + " " + data.current.humidity + " " + "%" + "</h4>");
+                $("#searched-city-humidity").html("<h5>" + "Humidity: ‎‏‏‎ ‎ " + " " + data.current.humidity + " " + "‏‏‎ ‎%" + "</h5>");
 
                 $("#searched-city-windspeed").html("<h5>" + "Wind Speed: ‎‏‏‎ ‎ " + " " + data.current.wind_speed + " " + " ‎‏‏‎ ‎MPH" + "</h5>");
 
@@ -158,23 +163,23 @@ $(document).ready(function () {
 
         let html = " ";
 
-        
+
         dailyData.forEach((fiveDay, i) => {
 
-            if (i > 4 ) return; 
-    
+            if (i > 4) return;
+
 
             var tempFahrenheit = (fiveDay.temp.day - 273.15) * 1.80 + 32;
 
 
             html += `<div class="col-m-2">
         <div class="card border-light mb-3" style="max-width: 20rem;">
-            <div class="card-header">Date: ${moment().add(i+1, "days").format('l')} </div>
+            <div class="card-header">Date:‏‏‎ ‎‏‏‎ ‎${moment().add(i + 1, "days").format('l')} </div>
             <div class="card-body">
             <img src="https://openweathermap.org/img/wn/${fiveDay.weather[0].icon}@2x.png" >
 
-                <p class="card-text">Temp: ${tempFahrenheit.toFixed(1)}‎‏‏‎ ‎°F</p>
-                <p class="card-text">Humidity: ${fiveDay.humidity}‎‏‏‎ ‎%</p>
+                <p class="card-text">Temp:‏‏‎ ‎‏‏‎ ‎${tempFahrenheit.toFixed(1)}‎‏‏‎ ‎°F</p>
+                <p class="card-text">Humidity:‏‏‎ ‎‏‏‎ ‎${fiveDay.humidity}‎‏‏‎ ‎%</p>
             </div>
         </div>
     </div>`
@@ -184,8 +189,9 @@ $(document).ready(function () {
 
         $("#fiveDayRow").append(html);
 
-            
+
     }
+
 
 
 });

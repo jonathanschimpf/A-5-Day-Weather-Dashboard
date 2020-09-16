@@ -1,8 +1,13 @@
+.navbar {
+    padding-top: 9px !important;
+    padding-bottom: 9px !important;
+}
 
 .jumbotron {
-    padding-top: 16px !important;
-    padding-bottom: 12px !important;
+    padding-top: 20px !important;
+    padding-bottom: 10px !important;
 }
+
 
 .lowUV {
     background: green !important;
@@ -35,8 +40,6 @@
     padding-top: unset;
     padding-bottom: unset;
 }
-
-
 
 /* .col-md-3 {
     background: #303030;
