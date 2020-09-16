@@ -12,21 +12,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/darkly/bootstrap.min.css" />
 
 
-    <!--bootstrap cdn for layout styling // (currently commented out due to bootswatch theme use-->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" /> -->
-
-
     <!-- fontawesome for icons -->
 
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-
-
-    <!-- google fonts link for "work sans" font -->
-
-
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet" />
 
 
     <!-- dark weather related favicon -->
@@ -41,7 +31,7 @@
     <link rel="stylesheet" href="style.css" />
 
 
-    <!-- [favi] browser tab title -->
+    <!--  browser tab title -->
 
 
     <title>Weather Dashboard (5 Day)</title>
@@ -100,28 +90,25 @@
 
                             <!-- breathing room within the side bar-->
 
-                            <!-- <br>
                             <br>
                             <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br> -->
-
+                           
+            
                             <!-- ^ breathing room within the side bar ^ -->
 
 
                             <!-- previous search results sections and buttons to return back to previous search -->
 
-                            <!-- <h4>Previous Search Results:</h4> -->
+                            <hr>
 
-                            <!-- <hr> -->
+                            <div id="previousCitiesButton">
+
+                            </div>
+                            
+                            <!-- this button is being appended from local storage history -->
 
                             <!-- <button class="btn btn-secondary my-2 " 
-                                type="submit">${}</button> -->
-
-                            <!-- style="width: 270px; height: 50px" for the wider buttons, but it seems like the auto generated sizes in the btn btn-seconday my-2 works great -->
+                            type="submit">Buttons Land Here</button> -->
 
                         </div>
 
@@ -138,11 +125,11 @@
             <div class="col-md-9 py-4">
 
                 <div class="jumbotron">
-                    <h5>Currently:</h5>
-                    <hr>
+                    <h5 id="cityTitleLarge">Currently:</h5>
+                    
                     <div id="searched-city-nameanddate"></div>
 
-                    <div class= "cityTitle" id="searched-city-temperature"> </div>
+                    <div class="cityTitle" id="searched-city-temperature"> </div>
                     <div id="searched-city-humidity"> </div>
                     <div id="searched-city-windspeed"> </div>
                     <div id="searched-city-uvindex"> </div>
@@ -159,8 +146,10 @@
                     <!-- five day forecast cards section-->
 
                     <h5>Next Five Days: </h5>
-                    <hr>
+                    <br>
                     <div id="fiveDayRow" class="row justify-content-around">
+
+                        <!-- this stye of button is being applied five times via template literals -->
 
 
                         <!--<div class="col-m-2">
@@ -172,55 +161,7 @@
                                     <p class="card-text"> </p>
                                 </div>
                             </div>
-                        </div>
-
-
-                        <div class="col-m-2">
-                            <div class="card border-light mb-3" style="max-width: 20rem;">
-                                <div class="card-header"> </div>
-                                <div class="card-body">
-                                    
-                                    <p class="card-text"> </p>
-                                    <p class="card-text"> </p>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-m-2">
-                            <div class="card border-light mb-3" style="max-width: 20rem;">
-                                <div class="card-header"> </div>
-                                <div class="card-body">
-                                    
-                                    <p class="card-text"> </p>
-                                    <p class="card-text"> </p>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-m-2">
-                            <div class="card border-light mb-3" style="max-width: 20rem;">
-                                <div class="card-header"> </div>
-                                <div class="card-body">
-                                    
-                                    <p class="card-text"> </p>
-                                    <p class="card-text"> </p>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-m-2">
-                            <div class="card border-light mb-3" style="max-width: 20rem;">
-                                <div class="card-header"></div>
-                                <div class="card-body">
-                                    
-                                    <p class="card-text"> </p>
-                                    <p class="card-text"> </p>
-                                </div>
-                            </div>
-                        </div>  -->
+                        </div>-->
 
 
                     </div>
@@ -256,6 +197,80 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- HARD CODE BACKUP FOR REFERENCE -->
 
 
 

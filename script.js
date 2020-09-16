@@ -8,7 +8,22 @@ $(document).ready(function () {
     var citiesArray = JSON.parse(localStorage.getItem("cities")) || [];
 
 
-    // create buttons here.
+    // pull previous search results from the cities array 
+    // append each search to it's own button for quick searches.
+
+    for (var i = 0; i < citiesArray.length; i++) {
+        var previousSearchButtons = $("<button>");
+        previousSearchButtons.addClass("btn btn-secondary my-2 searchHistoryButton");
+        previousSearchButtons.text(citiesArray[i]); 
+        $("#previousCitiesButton").append(previousSearchButtons);
+    }
+
+ 
+    
+    $(document).on("click", ".searchHistoryButton", function(event) {
+        event.preventDefault();
+        checkCurrentCity($(this).text());
+    })
 
     // adding citySearchInput to the global scope
 
@@ -159,6 +174,8 @@ $(document).ready(function () {
 
     };
 
+// this function creates the five day forecast via template literals
+// this information has been passed from the one call api above
 
 
     function nextFiveDays(dailyData) {

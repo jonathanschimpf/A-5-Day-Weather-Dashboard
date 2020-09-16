@@ -1,3 +1,11 @@
+
+/***************************************************************
+CSS: for overall layout appearance / navbar thinning adjustments 
+positioning+size of jumbotron adjusted as well with padding...
+color block functionality colors: for UV index risk warnings ☺
+**************************************************************/
+
+
 .navbar {
     padding-top: 9px !important;
     padding-bottom: 9px !important;
@@ -40,19 +48,3 @@
     padding-top: unset;
     padding-bottom: unset;
 }
-
-/* .col-md-3 {
-    background: #303030;
-} */
-
-/* @media (max-width: 768px) {
-    .navbar-collapse  {
-        display: block;
-    }
-} */
-
-/* html, body {
-    margin: 0;
-    height: 100%;
-    overflow: hidden;
-} */
