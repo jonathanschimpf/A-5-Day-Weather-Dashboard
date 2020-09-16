@@ -7,6 +7,8 @@ $(document).ready(function () {
 
     // this is the search button on."click" feature
 
+    var citySearchInput = " ";
+
 
     $("#search-button").on("click", searchResults);
 
@@ -19,11 +21,10 @@ $(document).ready(function () {
 
         event.preventDefault();
 
-        var citySearchInput = $("#usersSearchInput").val();
+        citySearchInput = $("#usersSearchInput").val();
         console.log(citySearchInput);
 
         checkCurrentCity(citySearchInput);
-
 
     }
 
