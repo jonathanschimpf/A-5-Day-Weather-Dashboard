@@ -5,11 +5,16 @@ $(document).ready(function () {
     console.log("I'm ready..");
 
 
+    var citiesArray = JSON.parse(localStorage.getItem("cities")) || [];
+
+
+    // create buttons here.
+
     // adding citySearchInput to the global scope
 
 
     var citySearchInput = " ";
-   
+
 
     // this is the search button on."click" feature
 
@@ -27,6 +32,9 @@ $(document).ready(function () {
 
         citySearchInput = $("#usersSearchInput").val();
         console.log(citySearchInput);
+
+        citiesArray.push(citySearchInput);
+        localStorage.setItem("cities", JSON.stringify(citiesArray));
 
         checkCurrentCity(citySearchInput);
 
