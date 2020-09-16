@@ -62,11 +62,11 @@ $(document).ready(function () {
 
                 console.log(data);
 
-                $("#searched-city-nameanddate").html("<h2>" + data.name + " ‎‏‏‎ ‎ " + "("
+                $("#searched-city-nameanddate").html("<h3>" + data.name + " ‎‏‏‎ ‎ " + "("
 
                     + moment().format('l') + ")" + "<img src=" + "https://openweathermap.org/img/wn/"
 
-                    + data.weather[0].icon + "@2x.png" + ">" + "</h2>");
+                    + data.weather[0].icon + "@2x.png" + ">" + "</h3>");
 
 
                 var longitude = data.coord.lon;
@@ -108,13 +108,13 @@ $(document).ready(function () {
 
                 var tempF = (data.current.temp - 273.15) * 1.80 + 32;
 
-                $("#searched-city-temperature").html("<h4>" + "Temperature: ‎‏‏‎ ‎ " + " " + tempF.toFixed(1) + " " + "°F" + "</h4>");
+                $("#searched-city-temperature").html("<h5>" + "Temperature: ‎‏‏‎ ‎ " + " " + tempF.toFixed(1) + " " + "°F" + "</h5>");
 
-                $("#searched-city-humidity").html("<h4>" + "Humidity: ‎‏‏‎ ‎ " + " " + data.current.humidity + " " + "%" + "</h4>");
+                $("#searched-city-humidity").html("<h5>" + "Humidity: ‎‏‏‎ ‎ " + " " + data.current.humidity + " " + "%" + "</h4>");
 
-                $("#searched-city-windspeed").html("<h4>" + "Wind Speed: ‎‏‏‎ ‎ " + " " + data.current.wind_speed + " " + " ‎‏‏‎ ‎MPH" + "</h4>");
+                $("#searched-city-windspeed").html("<h5>" + "Wind Speed: ‎‏‏‎ ‎ " + " " + data.current.wind_speed + " " + " ‎‏‏‎ ‎MPH" + "</h5>");
 
-                $("#searched-city-uvindex").html("<h4>" + "UV Index: ‎‏‏‎ ‎ " + '<span class="uviColor">' + data.current.uvi + "</span>" + "</h4>");
+                $("#searched-city-uvindex").html("<h5>" + "UV Index: ‎‏‏‎ ‎ " + '<span class="uviColor">' + data.current.uvi + "</span>" + "</h5>");
 
 
 
@@ -140,7 +140,7 @@ $(document).ready(function () {
 
 
 
-                nextFiveDays(citySearchInput);
+                nextFiveDays(data.daily);
 
             });
 
@@ -148,28 +148,43 @@ $(document).ready(function () {
 
 
 
-    function nextFiveDays(citySearchInput) {
+    function nextFiveDays(dailyData) {
+
+        $("#fiveDayRow").empty();
 
 
-
-        var queryURL =
-
-            "https://api.openweathermap.org/data/2.5/forecast?q=" +
-
-            + citySearchInput + "&appid=" + myOpenWeatherKey;
+        console.log(dailyData);
 
 
-        $.ajax({
-            url: queryURL,
-            method: "GET"
+        let html = " ";
 
-        })
+        
+        dailyData.forEach((fiveDay, i) => {
 
-            .then(function (data) {
+            if (i > 4 ) return; 
+    
 
-                console.log(data);
+            var tempFahrenheit = (fiveDay.temp.day - 273.15) * 1.80 + 32;
 
-            });
+
+            html += `<div class="col-m-2">
+        <div class="card border-light mb-3" style="max-width: 20rem;">
+            <div class="card-header">Date: ${moment().add(i+1, "days").format('l')} </div>
+            <div class="card-body">
+            <img src="https://openweathermap.org/img/wn/${fiveDay.weather[0].icon}@2x.png" >
+
+                <p class="card-text">Temp: ${tempFahrenheit.toFixed(1)}‎‏‏‎ ‎°F</p>
+                <p class="card-text">Humidity: ${fiveDay.humidity}‎‏‏‎ ‎%</p>
+            </div>
+        </div>
+    </div>`
+
+        });
+
+
+        $("#fiveDayRow").append(html);
+
+            
     }
 
 

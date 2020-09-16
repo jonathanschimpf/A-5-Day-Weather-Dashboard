@@ -1,32 +1,41 @@
+
 .jumbotron {
-    padding-top: 21px !important;
-    padding-bottom: 20px !important;
+    padding-top: 16px !important;
+    padding-bottom: 12px !important;
 }
 
 .lowUV {
     background: green !important;
     color: black !important;
-    padding: 2px;
-    
+    padding: 4px;
+    padding-top: unset;
+    padding-bottom: unset;
 }
 
 .moderateUV {
     background: yellow !important;
     color: black !important;
-    padding: 2px;
+    padding: 4px;
+    padding-top: unset;
+    padding-bottom: unset;
 }
-   
+
 .mediumUV {
     background: orange !important;
     color: black !important;
-    padding: 2px;
+    padding: 4px;
+    padding-top: unset;
+    padding-bottom: unset;
 }
 
 .highUV {
     background: red !important;
-    color: black !important; 
-    padding: 2px;
+    color: black !important;
+    padding: 4px;
+    padding-top: unset;
+    padding-bottom: unset;
 }
+
 
 
 /* .col-md-3 {
@@ -37,4 +46,10 @@
     .navbar-collapse  {
         display: block;
     }
+} */
+
+/* html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
 } */
