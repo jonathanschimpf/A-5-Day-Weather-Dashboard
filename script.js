@@ -24,6 +24,7 @@ $(document).ready(function () {
 
         checkCurrentCity(citySearchInput);
 
+
     }
 
 
@@ -40,14 +41,14 @@ $(document).ready(function () {
     // this API CALL strictly targets the city name and retrieves an icon.
 
 
-    function checkCurrentCity(city) {
+    function checkCurrentCity(citySearchInput) {
 
         var queryURL =
 
             "https://api.openweathermap.org/data/2.5/weather?q=" +
 
 
-            city + "&appid=" + myOpenWeatherKey;
+            citySearchInput + "&appid=" + myOpenWeatherKey;
 
 
         $.ajax({
@@ -56,18 +57,19 @@ $(document).ready(function () {
 
         })
 
-            .then(function (searchedCityResults) {
+            .then(function (data) {
 
-                console.log(searchedCityResults);
+                console.log(data);
 
-                $("#searched-city-nameanddate").html("<h2>" + searchedCityResults.name + " ‎‏‏‎ ‎ " + "("
+                $("#searched-city-nameanddate").html("<h2>" + data.name + " ‎‏‏‎ ‎ " + "("
 
                     + moment().format('l') + ")" + "<img src=" + "https://openweathermap.org/img/wn/"
 
-                    + searchedCityResults.weather[0].icon + "@2x.png" + ">" + "</h2>");
+                    + data.weather[0].icon + "@2x.png" + ">" + "</h2>");
 
-                var longitude = searchedCityResults.coord.lon;
-                var latitude = searchedCityResults.coord.lat;
+
+                var longitude = data.coord.lon;
+                var latitude = data.coord.lat;
 
                 getCurrentConditions(longitude, latitude);
 
@@ -95,42 +97,79 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
 
-        }).then(function (oneCallResults) {
+        })
 
-            console.log(oneCallResults);
+            .then(function (data) {
 
-
-
-            var tempF = (oneCallResults.current.temp - 273.15) * 1.80 + 32;
-
-            $("#searched-city-temperature").html("<h4>" + "Temperature: ‎‏‏‎ ‎ " + " " + tempF.toFixed(1) + " " + "°F" + "</h4>");
-
-            $("#searched-city-humidity").html("<h4>" + "Humidity: ‎‏‏‎ ‎ " + " " + oneCallResults.current.humidity + " " + "%" + "</h4>");
-
-            $("#searched-city-windspeed").html("<h4>" + "Wind Speed: ‎‏‏‎ ‎ " + " " + oneCallResults.current.wind_speed + " " + " ‎‏‏‎ ‎ mph" + "</h4>");
-
-            $("#searched-city-uvindex").html("<h4>" + "UV Index: ‎‏‏‎ ‎ " + '<span class="uviColor">' + oneCallResults.current.uvi + "</span>" + "</h4>");
+                console.log(data);
 
 
 
-            var oneCallResultsCurrentUvi = oneCallResults.current.uvi;
+                var tempF = (data.current.temp - 273.15) * 1.80 + 32;
+
+                $("#searched-city-temperature").html("<h4>" + "Temperature: ‎‏‏‎ ‎ " + " " + tempF.toFixed(1) + " " + "°F" + "</h4>");
+
+                $("#searched-city-humidity").html("<h4>" + "Humidity: ‎‏‏‎ ‎ " + " " + data.current.humidity + " " + "%" + "</h4>");
+
+                $("#searched-city-windspeed").html("<h4>" + "Wind Speed: ‎‏‏‎ ‎ " + " " + data.current.wind_speed + " " + " ‎‏‏‎ ‎MPH" + "</h4>");
+
+                $("#searched-city-uvindex").html("<h4>" + "UV Index: ‎‏‏‎ ‎ " + '<span class="uviColor">' + data.current.uvi + "</span>" + "</h4>");
 
 
 
-            if (oneCallResultsCurrentUvi < 3) {
-                $(".uviColor").addClass("lowUV");
+                var oneCallResultsCurrentUvi = data.current.uvi;
 
-            } else if (oneCallResultsCurrentUvi >= 3 && oneCallResultsCurrentUvi <= 7) {
-                $(".uviColor").addClass("mediumUV");
 
-            } else {
-                $(".uviColor").addClass("highUV");
-            }
 
-        });
+                if (oneCallResultsCurrentUvi < 2) {
+                    $(".uviColor").addClass("lowUV");
+
+
+                } else if (oneCallResultsCurrentUvi >= 2 && oneCallResultsCurrentUvi <= 5) {
+                    $(".uviColor").addClass("moderateUV");
+
+
+                } else if (oneCallResultsCurrentUvi >= 5 && oneCallResultsCurrentUvi <= 7) {
+                    $(".uviColor").addClass("mediumUV");
+
+
+                } else {
+                    $(".uviColor").addClass("highUV");
+                }
+
+
+
+                nextFiveDays(citySearchInput);
+
+            });
 
     };
 
+
+
+    function nextFiveDays(citySearchInput) {
+
+
+
+        var queryURL =
+
+            "https://api.openweathermap.org/data/2.5/forecast?q=" +
+
+            + citySearchInput + "&appid=" + myOpenWeatherKey;
+
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+
+        })
+
+            .then(function (data) {
+
+                console.log(data);
+
+            });
+    }
 
 
 });

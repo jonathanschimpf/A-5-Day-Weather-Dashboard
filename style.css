@@ -5,20 +5,27 @@
 
 .lowUV {
     background: green !important;
-    color: black!important;
-    padding: 3px!important;
+    color: black !important;
+    padding: 2px;
+    
 }
 
-.mediumUV {
+.moderateUV {
     background: yellow !important;
-    color: black!important;
-    padding: 3px!important;
+    color: black !important;
+    padding: 2px;
+}
+   
+.mediumUV {
+    background: orange !important;
+    color: black !important;
+    padding: 2px;
 }
 
 .highUV {
-    background: red!important;
-    color: black!important;
-    padding: 3px!important;
+    background: red !important;
+    color: black !important; 
+    padding: 2px;
 }
 
 
