@@ -17,7 +17,6 @@ $(document).ready(function () {
         previousSearchButtons.text(citiesArray[i]); 
         $("#previousCitiesButton").append(previousSearchButtons);
     }
-
  
     
     $(document).on("click", ".searchHistoryButton", function(event) {
@@ -52,6 +51,10 @@ $(document).ready(function () {
         localStorage.setItem("cities", JSON.stringify(citiesArray));
 
         checkCurrentCity(citySearchInput);
+        var previousSearchButtons = $("<button>");
+        previousSearchButtons.addClass("btn btn-secondary my-2 searchHistoryButton");
+        previousSearchButtons.text(citySearchInput);
+        $("#previousCitiesButton").append(previousSearchButtons);
 
     }
 
